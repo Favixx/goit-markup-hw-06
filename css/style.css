@@ -608,7 +608,7 @@ img {
   font-weight: 500;
   line-height: 1.5;
   letter-spacing: 0.02em;
-  color: var(--white-background-color);
+  color: var(--modal-button-text);
   margin-bottom: 16px;
 }
 
@@ -1046,4 +1046,33 @@ textarea {
 
 .footer-cont-2 {
   margin-right: 80px;
+}
+
+.checkbox_label {
+  padding-left: 24px;
+}
+
+.checkbox {
+  position: absolute;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.checkbox:checked+.checkbox_ico {
+  background-color: var(--pressed-state-color);
+  background-image: url(../images/checkbox-icon.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.checkbox_ico {
+  width: 16px;
+  height: 16px;
+  position: absolute;
+  border-radius: 2px;
+  background-color: var(--white-background-color);
+  margin-left: -24px;
+  background-image: url(../images/checkbox-icon-unchecked.svg);
+  background-position: center;
+  background-repeat: no-repeat;
 }
