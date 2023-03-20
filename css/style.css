@@ -33,6 +33,7 @@ li {
   --white-background-color: #ffffff;
   --modal-background-color: #fcfcfc;
   --customers-background: #E5E5E5;
+  --modal-button-text: rgba(255, 255, 255, 1);
 }
 
 body {
@@ -589,7 +590,6 @@ img {
 .footer-cont {
   align-items: baseline;
   display: flex;
-  gap: 120px;
 }
 
 .dark_social_media_lnk {
@@ -663,6 +663,7 @@ img {
   left: 50%;
   background-color: var(--modal-background-color);
   opacity: 1;
+  min-height: 584px;
   width: 408px;
   border-radius: 4px;
   z-index: 2;
@@ -713,6 +714,13 @@ img {
 .close:hover svg {
   transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
   fill: var(--white-background-color);
+}
+
+.is-hidden {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  visibility: hidden;
 }
 
 .line::after {
@@ -773,10 +781,19 @@ img {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  margin-bottom: 8px;
+  width: 360px;
+}
+
+.text-area {
+  margin-bottom: 16px;
+  height: 120px;
+  padding: 8px 16px;
+  border-radius: 4px;
+  width: 360px
 }
 
 .form_input label {
+  display: inline-block;
   font-family: 'Roboto';
   font-style: normal;
   font-weight: 400;
@@ -800,32 +817,30 @@ textarea {
   border: 0;
 }
 
-.modal_form button {
-  align-self: center;
-}
-
 .modal_form {
   display: flex;
   flex-direction: column;
   gap: 8px;
 }
 
-.checkbox-content p {
+.checkbox-content label {
   font-size: 12px;
   line-height: 1.17;
   letter-spacing: 0.04em;
   color: var(--secondary-text-color);
+  display: inline-block;
 }
 
 .checkbox-content {
   display: flex;
   align-items: center;
-  margin-bottom: 24px;
+  margin-bottom: 16px;
+  margin-top: 8px;
 }
 
 .checkbox-content a {
   font-size: 12px;
-  color: var(--main-text-color);
+  color: var(--primary-brand-color);
   line-height: 1.25;
   display: inline-block;
 }
@@ -841,6 +856,7 @@ textarea {
 }
 
 .modal_form button {
+  align-self: center;
   padding: 16px 32px;
   background-color: var(--primary-brand-color);
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
@@ -849,6 +865,12 @@ textarea {
   color: var(--white-background-color);
   font-size: 16px;
   line-height: 1.5;
+  transition: background-color 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.modal_form button:hover {
+  cursor: pointer;
+  background-color: var(--pressed-state-color);
 }
 
 .modal_form button span {
@@ -860,11 +882,11 @@ textarea {
   padding: 11px 0px 11px 38px;
   border-radius: 4px;
   border: 0;
-  outline: 1px solid var(--dark-color);
+  outline: 1px solid var(--modal-overlay-color);
 }
 
 .form_input input:active {
-  outline: 1px solid var(--main-text-color);
+  outline: 1px solid var(--pressed-state-color);
 }
 
 .input-icon {
@@ -876,6 +898,7 @@ textarea {
 }
 
 .modal_form textarea {
+  height: 120px;
   padding: 8px 16px;
   border-radius: 4px;
 }
@@ -923,15 +946,98 @@ textarea {
 .form_input textarea {
   outline: 0;
   border: 0;
-  outline: 1px solid var(--dark-color);
+  outline: 1px solid var(--modal-overlay-color);
 }
 
 .form_input textarea:active,
 .form_input textarea:focus {
   border: 0;
   outline-color: var(--pressed-state-color);
+  transition: outline-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .first_label {
   margin-top: 16px;
+}
+
+
+.subscription_form {
+  display: flex;
+}
+
+.subscription label {
+  display: inline-block;
+  color: var(--modal-button-text);
+  margin-bottom: 16px;
+}
+
+.subscription_form input {
+  margin-right: 24px;
+  outline: 1px solid var(--modal-button-text);
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.15));
+  border-radius: 4px;
+  border: 0;
+  background-color: transparent;
+  color: var(--modal-button-text);
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 16px;
+  width: 264px;
+}
+
+.subscription_form input::placeholder {
+  color: var(--modal-button-text);
+  font-size: 12px;
+  line-height: 2;
+  letter-spacing: 0.04em;
+}
+
+.subscription_form button {
+  display: flex;
+  padding-left: 24px;
+  padding-right: 24px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  border: 0;
+  background-color: var(--primary-brand-color);
+  color: var(--modal-button-text);
+  border-radius: 4px;
+}
+
+.subscription_form button:hover {
+  cursor: pointer;
+  background-color: var(--pressed-state-color);
+  transition: background-color 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.subscription_form button span {
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  display: flex;
+  gap: 16px;
+}
+
+.subscription_form button span svg {
+  display: inline-block;
+  fill: var(--modal-button-text);
+  width: 24px;
+  height: 24px;
+}
+
+.subscription_form button:hover {
+  cursor: pointer;
+}
+
+.subscription_form input:focus,
+.subscription_form input:active {
+  border: 0;
+}
+
+.footer-cont-1 {
+  margin-right: 120px;
+}
+
+.footer-cont-2 {
+  margin-right: 80px;
 }
